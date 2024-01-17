@@ -15,19 +15,19 @@ const users = [
 
 
 const Login = () => {
-  const [email,setEmail]=useState("");
-  const [password,setPassword]=useState("");
-  const navigation = useNavigation(); 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
-  const handleLogin = async () => {
-    const matchingUser = users.find((user)=>
-      user.email === email && users.password === password);
+  const handleLogin =  () => {
+    const matchingUser = users.find((user) => user.email === email && user.password === password);
 
-    if(matchingUser){
-      navigation.navigate('Home');//if user found
-    }else{
+    if(!matchingUser){
+      alert('User does not exist');
       console.log(email +":" +password)
       console.log('Invalid email or password');
+    }else{
+      navigation.navigate('Home');//if user found
     }
   }
   return (
